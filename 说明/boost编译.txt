@@ -1,0 +1,63 @@
+bjam install --toolset=msvc-14.0 --without-python --prefix="D:\SDK\boost\boost_1_63_0\bin\vs2015" link=static runtime-link=shared runtime-link=static threading=multi debug release
+bjam install --toolset=msvc-10.0 --without-python --prefix="D:\SDK\boost\boost_1_63_0\bin\vs2010" link=static runtime-link=shared runtime-link=static threading=multi debug release
+
+bjam install --toolset=msvc-14.0 --without-graph --without-graph_parallel --without-math --without-mpi --without-python --without-serialization --without-wave --prefix="D:\SDK\boost\boost_1_60_0\bin\vs2015" link=static runtime-link=shared runtime-link=static threading=multi debug release
+
+
+运行“bootstrap.bat”，bjam.exe编译成功
+
+（1）stage/install：
+
+stage表示只生成库（dll和lib），install还会生成包含头文件的include目录。本人推荐使用stage，因为install生成的这个include目录实际就是boost安装包解压缩后的boost目录（E:\SDK\boost\boost，只比include目录多几个非hpp文件，都很小），所以可以直接使用，而且不同的IDE都可以使用同一套头文件，这样既节省编译时间，也节省硬盘空间。
+
+（2）toolset：
+
+指定编译器，可选的如borland、gcc、msvc（VC6）、msvc-9.0（VS2008）、msvc-10.0(VS2010)等。
+
+（3）without/with：
+
+选择不编译/编译哪些库。因为python、mpi等库我都用不着，所以排除之。还有wave、graph、math、regex、test、program_options、serialization、signals这几个库编出的静态lib都非常大，所以不需要的也可以without掉。这可以根据各人需要进行选择，默认是全部编译。但是需要注意，如果选择编译python的话，是需要python语言支持的，应该到python官方主页http://www.python.org/下载安装。
+
+查看boost包含库的命令是bjam --show-libraries。
+
+（4）stagedir/prefix：
+
+stage时使用stagedir，install时使用prefix，表示编译生成文件的路径。推荐给不同的IDE指定不同的目录，如VS2008对应的是E:\SDK\boost\bin\vc9，VC6对应的是E:\SDK\boost\bin\vc6，否则都生成到一个目录下面，难以管理。如果使用了install参数，那么还将生成头文件目录，vc9对应的就是E:\SDK\boost\bin\vc9\include\boost-1_46\boost,vc6类似（光这路径都这样累赘，还是使用stage好）。
+
+（5）build-dir：
+
+编译生成的中间文件的路径。这个本人这里没用到，默认就在根目录（E:\SDK\boost）下，目录名为bin.v2，等编译完成后可将这个目录全部删除（没用了），所以不需要去设置。
+
+（6）link：
+
+生成动态链接库/静态链接库。生成动态链接库需使用shared方式，生成静态链接库需使用static方式。一般boost库可能都是以static方式编译，因为最终发布程序带着boost的dll感觉会比较累赘。
+
+（7）runtime-link：
+
+动态/静态链接C/C++运行时库。同样有shared和static两种方式，这样runtime-link和link一共可以产生4种组合方式，各人可以根据自己的需要选择编译。
+
+（8）threading：
+
+单/多线程编译。一般都写多线程程序，当然要指定multi方式了；如果需要编写单线程程序，那么还需要编译单线程库，可以使用single方式。
+
+（9）debug/release：
+
+编译debug/release版本。一般都是程序的debug版本对应库的debug版本，所以两个都编译。
+
+
+
+2. 编译boost
+
+编译boost的命令比较复杂，尤其是 link, runtime-link 这两个选项的功能分不太清楚，他们共有4种相互组合，这些相互组合各有什么含义呢？
+
+所以首先做个实验，仅编译date_time库，观察一下这两个选项的作用。
+
+分别使用下面的命令行编译， 
+
+复制代码
+b2 stage --toolset=msvc-12.0 --with-date_time --stagedir="E:\eCode\boost_1_56_0\bin\vc12" link=static runtime-link=static threading=multi debug release
+b2 stage --toolset=msvc-12.0 --with-date_time --stagedir="E:\eCode\boost_1_56_0\bin\vc12" link=static runtime-link=shared threading=multi debug release
+b2 stage --toolset=msvc-12.0 --with-date_time --stagedir="E:\eCode\boost_1_56_0\bin\vc12" link=shared runtime-link=shared threading=multi debug release
+b2 stage --toolset=msvc-12.0 --with-date_time --stagedir="E:\eCode\boost_1_56_0\bin\vc12" link=shared runtime-link=static threading=multi debug release
+b2 stage --toolset=msvc-12.0 --with-date_time --stagedir="E:\eCode\boost_1_56_0\bin\vc12_2" （为避免将前面的结果覆盖，配置另一目录vc12_2存放）
+b2 stage --toolset=msvc-12.0 --with-date_time --stagedir="E:\eCode\boost_1_56_0\bin\vc12_2" --build-type=complete（为避免将前面的结果覆盖，配置另一目录vc12_3存放）

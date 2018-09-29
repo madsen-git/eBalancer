@@ -1,0 +1,9 @@
+.\objects\modbus.o: ..\..\MTools\STM32\modbus.c
+.\objects\modbus.o: ..\..\MTools\STM32\modbus.h
+.\objects\modbus.o: ..\..\MTools\STM32\basedef.h
+.\objects\modbus.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\cstdint
+.\objects\modbus.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\modbus.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\cstdlib
+.\objects\modbus.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\modbus.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\cstdio
+.\objects\modbus.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

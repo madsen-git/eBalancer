@@ -1,0 +1,10 @@
+.\objects\screctifier.o: SCRectifier.c
+.\objects\screctifier.o: SCRectifier.h
+.\objects\screctifier.o: ..\..\MTools\STM32\basedef.h
+.\objects\screctifier.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\cstdint
+.\objects\screctifier.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\screctifier.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\cstdlib
+.\objects\screctifier.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\screctifier.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\cstdio
+.\objects\screctifier.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\screctifier.o: ..\..\MTools\STM32\usart.h

@@ -1,0 +1,11 @@
+.\objects\weigher.o: weigher.c
+.\objects\weigher.o: weigher.h
+.\objects\weigher.o: ..\..\MTools\STM32\basedef.h
+.\objects\weigher.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\cstdint
+.\objects\weigher.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\weigher.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\cstdlib
+.\objects\weigher.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\weigher.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\cstdio
+.\objects\weigher.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\weigher.o: ..\..\MTools\STM32\modbus.h
+.\objects\weigher.o: ..\..\MTools\STM32\usart.h

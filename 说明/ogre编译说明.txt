@@ -1,0 +1,9 @@
+编译OGRE
+
+安装步骤及方法参考：http://www.ogre3d.org/tikiwiki/tiki-index.php?page=Building+Ogre
+
+1、下载并安装DXSDK
+
+2、克隆依赖库Prerequisites，来源：https://bitbucket.org/cabalistic/ogredeps
+
+3、克隆源码，来源：https://bitbucket.org/sinbad/ogre
